@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -25,11 +25,11 @@ export default function BottomTabNavigator({ navigation, route }) {
         }}
       />
       <BottomTab.Screen
-        name="Links"
-        component={LinksScreen}
+        name="Settings"
+        component={SettingsScreen}
         options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: '設定',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-settings" />,
         }}
       />
     </BottomTab.Navigator>
@@ -42,7 +42,7 @@ function getHeaderTitle(route) {
   switch (routeName) {
     case 'Home':
       return 'How to get started';
-    case 'Links':
-      return 'Links to learn more';
+    case 'Settings':
+      return '設定';
   }
 }
