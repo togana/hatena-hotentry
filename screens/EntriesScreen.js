@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, TouchableOpacity, Clipboard } from 'react-native';
+import { View, FlatList, Clipboard } from 'react-native';
 import { Root, Container, ListItem, Body, Text, ActionSheet } from 'native-base';
 import xml2js from 'react-native-xml2js';
 import * as WebBrowser from 'expo-web-browser';
@@ -8,36 +8,34 @@ import { CategoriesContext } from '../contexts/categories';
 
 const Item = ({ item, navigation }) => {
   return (
-    <ListItem>
-      <TouchableOpacity
-        onPress={async () => await WebBrowser.openBrowserAsync(item.link.toString())}
-        onLongPress={() => ActionSheet.show(
-          {
-            options: [
-              'URLのコピー',
-              'キャンセル',
-            ],
-            cancelButtonIndex: 1,
-            title: item.title.toString(),
-          },
-          buttonIndex => {
-            switch(buttonIndex) {
-              case 0:
-                Clipboard.setString(item.link.toString());
-                break;
-            }
+    <ListItem
+      onPress={async () => await WebBrowser.openBrowserAsync(item.link.toString())}
+      onLongPress={() => ActionSheet.show(
+        {
+          options: [
+            'URLのコピー',
+            'キャンセル',
+          ],
+          cancelButtonIndex: 1,
+          title: item.title.toString(),
+        },
+        buttonIndex => {
+          switch(buttonIndex) {
+            case 0:
+              Clipboard.setString(item.link.toString());
+              break;
           }
-        )}
-      >
-        <Body>
-          <Text numberOfLines={2}>{item.title}</Text>
-          <Text numberOfLines={3} note style={{ marginTop: 8 }}>{item.description}</Text>
-          <View style={{ marginTop: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text note>{`${item['hatena:bookmarkcount']} users`}</Text>
-            <Text note>{dayjs(item['dc:date']).fromNow()}</Text>
-          </View>
-        </Body>
-      </TouchableOpacity>
+        }
+      )}
+    >
+      <Body>
+        <Text numberOfLines={2}>{item.title}</Text>
+        <Text numberOfLines={3} note style={{ marginTop: 8 }}>{item.description}</Text>
+        <View style={{ marginTop: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
+          <Text note>{`${item['hatena:bookmarkcount']} users`}</Text>
+          <Text note>{dayjs(item['dc:date']).fromNow()}</Text>
+        </View>
+      </Body>
     </ListItem>
   );
 };
