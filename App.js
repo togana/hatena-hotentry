@@ -5,6 +5,7 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { enableScreens } from 'react-native-screens';
 
 import { CategoriesContextProvider } from './contexts/categories';
 import { getCategories } from './stores';
@@ -12,6 +13,7 @@ import { getCategories } from './stores';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 
+enableScreens();
 const Stack = createStackNavigator();
 
 export default function App(props) {
