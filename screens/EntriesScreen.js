@@ -3,14 +3,8 @@ import { View, FlatList, TouchableOpacity, Clipboard } from 'react-native';
 import { Root, Container, ListItem, Body, Text, ActionSheet } from 'native-base';
 import xml2js from 'react-native-xml2js';
 import * as WebBrowser from 'expo-web-browser';
-import dayjs from 'dayjs';
-import 'dayjs/locale/ja';
-import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from '../libs/dayjs';
 import { CategoriesContext } from '../contexts/categories';
-
-
-dayjs.locale('ja');
-dayjs.extend(relativeTime)
 
 const Item = ({ item, navigation }) => {
   return (
