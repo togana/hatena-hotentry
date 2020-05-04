@@ -1,11 +1,10 @@
 {
   "expo": {
-    "name": "HelloWorld",
+    "name": "hatena-hotentry",
     "slug": "hatena-hotentry",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,6 +23,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": ""
   }
 }
