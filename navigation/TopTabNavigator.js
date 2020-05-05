@@ -16,7 +16,7 @@ export default function TopTabNavigator() {
           if (categories.filter(c => c.show).length) {
             const scrollEnabled = categories.filter(c => c.show).length > 3;
             return (
-              <TopTab.Navigator tabBarOptions={{ scrollEnabled }}>
+              <TopTab.Navigator lazy tabBarOptions={{ scrollEnabled }}>
                 {categories.filter(c => c.show).map((c) => <TopTab.Screen key={c.id} name={c.name} initialParams={{ key: c.id }} component={EntriesScreen} />)}
               </TopTab.Navigator>
             );
